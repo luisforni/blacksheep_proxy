@@ -87,3 +87,19 @@ curl -s -X POST http://localhost:8080/auth/token \
 # Usar el token (reemplaza XXX por el access_token devuelto)
 curl -H "Authorization: Bearer XXX" http://localhost:8080/api/health
 ```
+
+```bash
+TOKEN=$(curl -s -X POST http://localhost:8080/auth/token \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"admin@example.com","password":"admin123"}' \
+  | python -c 'import sys,json; print(json.load(sys.stdin)["access_token"])')
+
+curl -i -H "Authorization: Bearer $TOKEN" http://localhost:8080/api/health
+```
+
+Respuesta esperada.
+
+```bash
+HTTP/1.1 200 OK
+{"status":"upstream-ok"}
+```
