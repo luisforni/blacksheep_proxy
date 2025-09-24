@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  proxy:
+    build: .
+    container_name: blacksheep_proxy
+    ports:
+      - "8080:8080"
+    env_file: .env
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  backend:
+    image: tiangolo/uvicorn-gunicorn-fastapi:python3.11
+    container_name: fake_backend
+    environment:
+      - MODULE_NAME=main
+      - APP_MODULE=main:app
+    volumes:
+      - ./example_backend:/app
+    ports:
+      - "8000:80"
