@@ -88,6 +88,8 @@ curl -s -X POST http://localhost:8080/auth/token \
 curl -H "Authorization: Bearer XXX" http://localhost:8080/api/health
 ```
 
+o
+
 ```bash
 TOKEN=$(curl -s -X POST http://localhost:8080/auth/token \
   -H 'Content-Type: application/json' \
