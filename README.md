@@ -72,7 +72,7 @@ Crear backend de pruebas.
 cd example_backend
 python -m venv .venv
 source .venv/bin/activate       # Windows: .venv\Scripts\activate
-pip install fastapi uvicorn     # Windows: python -m pip install --upgrade pip
+pip install fastapi uvicorn
 uvicorn main:app --port 8000
 ```
 
